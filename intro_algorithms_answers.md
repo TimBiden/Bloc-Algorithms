@@ -57,3 +57,15 @@ END
 
 SET wardrobe to be an array containing Jeans, shirt, shoes
 RETURN wardrobe
+
+When to go to Costco:
+
+IF item is needed for dinner AND can't be bought at grocery store
+  SET Costco to True
+ELSE IF day isn't Saturday AND day isn't Sunday AND hour is less than 1700
+  SET Costco to True
+ELSE
+  SET Costco to False
+End
+
+RETURN Costco
