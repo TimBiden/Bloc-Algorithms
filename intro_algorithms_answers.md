@@ -22,3 +22,38 @@ SET tip equal to serviceQuality divided by numPeople
 SET tip equal to tip multiplied by totalBill
 
 RETURN tip
+
+
+Determining what to wear:
+
+GET highTemp
+GET day
+
+IF day is Sunday
+  SET pants equal to Slacks
+  SET shirt equal to Button-Down
+  SET shoes to Leather
+ELSE IF day is Saturday
+  IF highTemp is greater than or equal to 80
+    SET pants equal to Shorts
+    SET shirt equal to null
+    SET shoes to null
+  ELSE
+    SET pants equal to Jeans
+    SET shirt equal to T-Shirt
+    SET shoes to Flip-Flops
+  END
+ELSE
+  IF highTemp is greater than or equal to 80
+    SET pants equal to Shorts
+    SET shirt equal to T-Shirt
+    SET shoes to Flip-Flops
+  ELSE
+    SET pants equal to Jeans
+    SET shirt equal to T-Shirt
+    SET shoes to Sneakers
+  END
+END
+
+SET wardrobe to be an array containing Jeans, shirt, shoes
+RETURN wardrobe
