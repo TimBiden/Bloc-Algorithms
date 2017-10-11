@@ -11,37 +11,14 @@ def heapSort(array)
     swap = false
 
     while parent >= 0
-      puts ' '
-      puts "length = #{length}"
-      puts "array[parent] = #{array[parent]}"
-      puts "array[right] = #{array[right]}"
-      puts "array[left] = #{array[left]}"
-      puts ' '
 
       if array[right].nil?
-        puts "Right if effing NIL"
         greater = left
       elsif array[right] > array[left]
-        puts "Right isn't NIL"
         greater = right
       else
       greater = left
       end
-
-      puts "greater = #{greater}"
-
-      if array[greater].nil?
-        puts ' '
-        puts 'DAMMIT'
-        puts ' '
-      else
-        puts ' '
-        puts "array[greater] = #{array[greater]}"
-        puts ' '
-      end
-      puts ' '
-      puts "array[greater] = #{array[greater]}"
-      puts ' '
 
       if array[greater] > array[parent]
         array[greater], array[parent] = array[parent], array[greater]
