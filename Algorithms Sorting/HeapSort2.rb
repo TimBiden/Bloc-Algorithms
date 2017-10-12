@@ -1,14 +1,13 @@
 def heapSort(array)
   puts "#{array} ** Original Array"
 
-  length = array.length
+  heap(array, array.length)
 
-  heap(array, length)
+  # topSwap(array, array.length)
 end
 
 def heap(array, length)
   parent = length / 2
-  adjParent = parent - 1
   right = parent * 2
   left = right - 1
   swap = false
@@ -31,9 +30,18 @@ def heap(array, length)
     parent -= 1
     puts array.to_s
 
-    length -= 1
+    length -= 2
     heap(array, length)
   end
+end
+
+def topSwap(array, length)
+  puts "array[0] = #{array[0]}"
+  puts "array[length] = #{array[length]}"
+  array[0], array[length] = array[length], array[0]
+  length -= 1
+
+  heap(array, length - @count)
 end
 
 array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7]
