@@ -10,7 +10,6 @@ def heap(array, length)
   parent = length / 2
   right = parent * 2
   left = right - 1
-  swap = false
 
   while parent >= 0
 
@@ -24,7 +23,6 @@ def heap(array, length)
 
     if array[greater] > array[parent]
       array[greater], array[parent] = array[parent], array[greater]
-      swap = true
     end
 
     parent -= 1
