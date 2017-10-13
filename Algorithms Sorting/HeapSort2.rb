@@ -8,8 +8,8 @@ end
 
 def heap(array, length)
   parent = length / 2
-  right = parent * 2
-  left = right - 1
+  left = parent * 2
+  right = left - 1
 
   while parent >= 0
 
@@ -42,5 +42,5 @@ def topSwap(array, length)
   heap(array, length - @count)
 end
 
-array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7]
+array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
 heapSort(array)
