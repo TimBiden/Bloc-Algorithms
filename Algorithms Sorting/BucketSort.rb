@@ -3,27 +3,26 @@ require_relative 'QuickSort.rb'
 
 def minMax(array)
   len = array.length - 1
-  @min = array[0]
-  @max = array[0]
+  puts "len = #{len}"
+  @minValue = array[0]
+  @maxValue = array[0]
   for i in 0..len
+    puts "@max = #{@maxValue}"
     if array[i + 1].nil?
-      @max = @max
-    elsif array[i] > array[@max]
-      @max = i
+      @maxValue = @maxValue
+    elsif array[i] > @maxValue
+      @maxValue = array[i]
     end
 
-    @min = i if array[i] < array[@min]
+    @minValue = i if array[i] < @minValue
   end
-
-  @maxValue = array[@max]
-  @minValue = array[@min]
 
   getDiff(array)
 end
 
 def getDiff(array)
   numBuckets = 5
-  diff = array[@max] - array[@min]
+  diff = @maxValue - @minValue
   @blockSize = diff / 5
 
   initBuckets(array, diff, numBuckets)
@@ -88,9 +87,11 @@ def replace(buckets)
   puts finalArray.to_s
 end
 
-array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
-# puts array.to_s
-# minMax(array)
+array = [248, 185, 22, 288, 128, 234, 24, 206, 220, 25, 101, 91, 107, 50, 130, 229, 124, 249, 274, 92, 155, 186, 236, 32, 88, 86, 84, 273, 183, 213, 11, 232, 190, 108, 176, 167, 35, 241, 71, 16, 228, 194, 165, 179, 56, 264, 154, 191, 272, 64]
 
 puts Benchmark.measure {minMax(array)}
-# Results: 0.000000   0.000000   0.000000 (  0.000478)
+# Results:  0.000000   0.000000   0.000000 (  0.000550)
+
+# array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+# puts array.to_s
+# minMax(array)

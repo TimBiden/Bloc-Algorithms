@@ -1,6 +1,6 @@
 require 'benchmark'
 
-def setLength(array)
+def heapSort(array)
   puts "#{array} = Original Array"
 
   array.unshift(nil)
@@ -58,9 +58,9 @@ def heap(array, length, left)
 end
 
 # array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
-# setLength(array)
+# heapSort(array)
 
-array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+array = [248, 185, 22, 288, 128, 234, 24, 206, 220, 25, 101, 91, 107, 50, 130, 229, 124, 249, 274, 92, 155, 186, 236, 32, 88, 86, 84, 273, 183, 213, 11, 232, 190, 108, 176, 167, 35, 241, 71, 16, 228, 194, 165, 179, 56, 264, 154, 191, 272, 64]
 
-puts Benchmark.measure {setLength(array)}
-# Results:  0.000000   0.000000   0.000000 (  0.000145)
+puts Benchmark.measure {heapSort(array)}
+# Results:  0.000000   0.000000   0.000000 (  0.000550)
