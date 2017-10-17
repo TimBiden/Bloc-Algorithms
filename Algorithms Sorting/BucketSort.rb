@@ -1,3 +1,4 @@
+require 'benchmark'
 require_relative 'QuickSort.rb'
 
 def minMax(array)
@@ -88,5 +89,8 @@ def replace(buckets)
 end
 
 array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
-puts array.to_s
-minMax(array)
+# puts array.to_s
+# minMax(array)
+
+puts Benchmark.measure {minMax(array)}
+# Results: 0.000000   0.000000   0.000000 (  0.000478)
