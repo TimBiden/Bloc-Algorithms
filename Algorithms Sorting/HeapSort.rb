@@ -1,3 +1,5 @@
+require 'benchmark'
+
 def setLength(array)
   puts "#{array} = Original Array"
 
@@ -55,5 +57,10 @@ def heap(array, length, left)
   end
 end
 
-array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
-setLength(array)
+# array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
+# setLength(array)
+
+array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+
+puts Benchmark.measure {setLength(array)}
+# Results:  0.000000   0.000000   0.000000 (  0.000145)
