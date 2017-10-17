@@ -1,3 +1,5 @@
+require 'benchmark'
+
 def partition(array, low, high)
   dupArray = array # Duplicate Array
   dupLow = low # Duplicate Low
@@ -42,3 +44,8 @@ end
 # quickSort(array, 0, array.length - 1)
 # puts 'Expected after sort: [2, 3, 5, 6, 7, 9, 10, 11, 12, 14]'
 # puts "Array after sorting: #{array}"
+
+array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+
+puts Benchmark.measure {quickSort(array, 0, array.length - 1)}
+# Results:  0.000000   0.000000   0.000000 (  0.000023)
