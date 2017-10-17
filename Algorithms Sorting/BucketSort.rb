@@ -1,9 +1,10 @@
+require_relative 'QuickSort.rb'
+
 def minMax(array)
   len = array.length - 1
   @min = array[0]
   @max = array[0]
   for i in 0..len
-    puts "array[#{i}] = #{array[i]}"
     if array[i + 1].nil?
       @max = @max
     elsif array[i] > array[@max]
@@ -13,41 +14,25 @@ def minMax(array)
     @min = i if array[i] < array[@min]
   end
 
-  puts " "
   @maxValue = array[@max]
-  puts "@max value = #{@maxValue}"
-  puts "@max position = #{@max}"
-
-  puts " "
   @minValue = array[@min]
-  puts "@min value = #{@minValue}"
-  puts "@min position = #{@min}"
-
-  puts " "
-  puts "@min position: #{@min}, @max position: #{@max}"
-
-
 
   getDiff(array)
 end
 
 def getDiff(array)
+  numBuckets = 5
   diff = array[@max] - array[@min]
   @blockSize = diff / 5
 
-  puts ""
-  puts "Diff between @min and @max is #{diff}"
-  puts "Each block is #{@blockSize} in size"
-
-  initBuckets(array, diff)
+  initBuckets(array, diff, numBuckets)
 end
 
-def initBuckets(array, diff)
-  numBuckets = 5
+def initBuckets(array, _diff, numBuckets)
   buckets = []
 
-  for i in 0..(buckets.length - 1) do
-    buckets[i] = []
+  for i in 0..(numBuckets - 1) do
+    buckets.push([])
   end
 
   distribute(array, buckets)
@@ -57,26 +42,51 @@ def distribute(array, buckets)
   for i in 0..(array.length - 1) do
     currentValue = array[i]
     putInBlock = case currentValue
-    when @minValue..(@minValue + @blockSize) then 0
-    when (@minValue + @blockSize)..(@minValue + @blockSize * 2) then 1
-    when (@minValue + @blockSize * 2)..(@minValue + @blockSize * 3) then 2
-    when (@minValue + @blockSize * 3)..(@minValue + @blockSize * 4) then 3
-    when (@minValue + @blockSize * 4)..(@maxValue) then 4
+                 when @minValue..(@minValue + @blockSize) then 0
+                 when (@minValue + @blockSize)..(@minValue + @blockSize * 2) then 1
+                 when (@minValue + @blockSize * 2)..(@minValue + @blockSize * 3) then 2
+                 when (@minValue + @blockSize * 3)..(@minValue + @blockSize * 4) then 3
+                 when (@minValue + @blockSize * 4)..@maxValue then 4
     end
 
-    puts " "
-    puts "currentValue = #{currentValue}"
-    puts "putInBlock = #{putInBlock}"
-    puts " "
-    puts "buckets = #{buckets}"
-
-    buckets.push(currentValue)
+    buckets[putInBlock].push(currentValue)
   end
 
-  for i in 0..5 do
-    puts "Here's buckets[#{i}]: #{buckets[i]}"
+  puts ' '
+
+  for i in 0..(buckets.length - 1) do
+    puts "buckets[#{i}]: #{buckets[i]}"
   end
+
+  sortBuckets(buckets)
 end
 
-array = [0.33, 0.45, 0.11, 0.4, 0.13, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+def sortBuckets(buckets)
+  for i in 0..(buckets.length - 1) do
+    next unless buckets[i].length > 1
+    puts ' '
+    puts buckets[i].to_s
+    buckets[i] = quickSort(buckets[i], 0, buckets[i].length - 1)
+    puts buckets[i].to_s
+  end
+
+  replace(buckets)
+end
+
+def replace(buckets)
+  finalArray = []
+
+  for i in 0..(buckets.length - 1) do
+    next if (buckets.length - 1) < 1
+    for j in 0..(buckets[i].length - 1) do
+      finalArray.push(buckets[i].shift)
+    end
+  end
+
+  puts ' '
+  puts finalArray.to_s
+end
+
+array = [0.33, 0.45, 0.13, 0.4, 0.11, 0.66, 0.89, 0.80, 0.28, 0.37, 0.13]
+puts array.to_s
 minMax(array)

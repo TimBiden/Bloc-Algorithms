@@ -34,11 +34,11 @@ def quickSort(array, low, high)
   array
 end
 
-array = [9]
-quickSort(array, 0, array.length - 1)
-puts "Array after sorting: #{array}"
-
-array = [9, 7, 5, 11, 12, 2, 14, 3, 10, 6]
-quickSort(array, 0, array.length - 1)
-puts 'Expected after sort: [2, 3, 5, 6, 7, 9, 10, 11, 12, 14]'
-puts "Array after sorting: #{array}"
+# array = [9]
+# quickSort(array, 0, array.length - 1)
+# puts "Array after sorting: #{array}"
+#
+# array = [9, 7, 5, 11, 12, 2, 14, 3, 10, 6]
+# quickSort(array, 0, array.length - 1)
+# puts 'Expected after sort: [2, 3, 5, 6, 7, 9, 10, 11, 12, 14]'
+# puts "Array after sorting: #{array}"

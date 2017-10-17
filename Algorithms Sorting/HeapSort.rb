@@ -3,7 +3,7 @@ def setLength(array)
 
   array.unshift(nil)
   length = array.length - 1
-  
+
   setParent(array, length)
 
   array.delete_at(0)
@@ -16,6 +16,17 @@ def setParent(array, length)
   parent = length / 2
 
   heap(array, length, parent * 2)
+end
+
+@swapCount = 0
+def topSwap(array, length)
+  return array if length <= 1
+  @swapCount += 1
+  array[1], array[length] = array[length], array[1]
+
+  length -= 1
+
+  setParent(array, length)
 end
 
 def heap(array, length, left)
@@ -42,17 +53,6 @@ def heap(array, length, left)
     left -= 2
     heap(array, length, left)
   end
-end
-
-@swapCount = 0
-def topSwap(array, length)
-  return array if length <= 1
-  @swapCount += 1
-  array[1], array[length] = array[length], array[1]
-
-  length -= 1
-
-  setParent(array, length)
 end
 
 array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
