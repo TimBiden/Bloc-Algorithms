@@ -1,9 +1,11 @@
-def setLength(array)
+require 'benchmark'
+
+def heapSort(array)
   puts "#{array} = Original Array"
 
   array.unshift(nil)
   length = array.length - 1
-  
+
   setParent(array, length)
 
   array.delete_at(0)
@@ -16,6 +18,17 @@ def setParent(array, length)
   parent = length / 2
 
   heap(array, length, parent * 2)
+end
+
+@swapCount = 0
+def topSwap(array, length)
+  return array if length <= 1
+  @swapCount += 1
+  array[1], array[length] = array[length], array[1]
+
+  length -= 1
+
+  setParent(array, length)
 end
 
 def heap(array, length, left)
@@ -44,16 +57,10 @@ def heap(array, length, left)
   end
 end
 
-@swapCount = 0
-def topSwap(array, length)
-  return array if length <= 1
-  @swapCount += 1
-  array[1], array[length] = array[length], array[1]
+# array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
+# heapSort(array)
 
-  length -= 1
+array = [248, 185, 22, 288, 128, 234, 24, 206, 220, 25, 101, 91, 107, 50, 130, 229, 124, 249, 274, 92, 155, 186, 236, 32, 88, 86, 84, 273, 183, 213, 11, 232, 190, 108, 176, 167, 35, 241, 71, 16, 228, 194, 165, 179, 56, 264, 154, 191, 272, 64]
 
-  setParent(array, length)
-end
-
-array = [0, 5, 1, 4, 3, 6, 9, 8, 2, 7, 13]
-setLength(array)
+puts Benchmark.measure {heapSort(array)}
+# Results:  0.000000   0.000000   0.000000 (  0.000550)
