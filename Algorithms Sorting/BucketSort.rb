@@ -21,7 +21,7 @@ def minMax(array)
 end
 
 def getDiff(array)
-  numBuckets = 5
+  numBuckets = 10
   diff = @maxValue - @minValue
   @blockSize = diff / 5
 
@@ -46,7 +46,12 @@ def distribute(array, buckets)
                  when (@minValue + @blockSize)..(@minValue + @blockSize * 2) then 1
                  when (@minValue + @blockSize * 2)..(@minValue + @blockSize * 3) then 2
                  when (@minValue + @blockSize * 3)..(@minValue + @blockSize * 4) then 3
-                 when (@minValue + @blockSize * 4)..@maxValue then 4
+                 when (@minValue + @blockSize * 4)..(@minValue + @blockSize * 5) then 4
+                 when (@minValue + @blockSize * 5)..(@minValue + @blockSize * 6) then 5
+                 when (@minValue + @blockSize * 6)..(@minValue + @blockSize * 7) then 6
+                 when (@minValue + @blockSize * 7)..(@minValue + @blockSize * 8) then 7
+                 when (@minValue + @blockSize * 8)..(@minValue + @blockSize * 9) then 8
+                 when (@minValue + @blockSize * 9)..@maxValue then 10
     end
 
     buckets[putInBlock].push(currentValue)
