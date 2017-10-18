@@ -12,7 +12,7 @@
 
 7. The Big-O of an algorithm with data points of (1,2), (2,	4), (3, 8), (4, 16) is O(nlogn).
 
-8. WorstCaseLinear.rb (Give the GH link)
+8. https://github.com/TimBiden/Bloc-Algorithms/blob/Complexity/Complexity/WorstCaseLinear.rb
 
 9. https://docs.google.com/spreadsheets/d/1uOz63iIB-B23_FykMYnxw7I6diaP1a0_wsv9fUaoq04/edit?usp=sharing
 
