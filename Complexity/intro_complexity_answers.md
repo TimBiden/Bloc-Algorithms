@@ -2,7 +2,7 @@
 
 2. The best case scenario for binary search is that the item required is the center item and it only takes 1 iteration to find it. That would make it O(1).
 
-3. The worst-case scenario for binary search is that your item is the last possible option to choose. In a binary search, that's 8 iterations, or O(log n).
+3. The worst-case scenario for binary search is that your item is the last possible option to choose. In a binary search, that's 8 iterations (if you have 256 elements), or O(log n).
 
 4. Interestingly, the bounded case for binary search is O(log n), which is exactly the same thing as its worst-case scenario.
 
