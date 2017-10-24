@@ -6,17 +6,13 @@ def poorly_written_ruby(*arrays)
 
   for i in 0..(combined_array.length - 1) do
     minValue = combined_array[i]
-    puts "minValue 1 = #{minValue}"
 
     for j in (i + 1)..(combined_array.length - 1) do
       if combined_array[j] <= minValue
         minValue = combined_array[j]
         minIndex = j
       end
-      puts count += 1
     end
-
-    puts "minValue 2 = #{minValue}"
 
     unless minValue == combined_array[i]
       tempValue = combined_array[i]
@@ -24,8 +20,6 @@ def poorly_written_ruby(*arrays)
       combined_array[minIndex] = tempValue
     end
   end
-
-  puts combined_array
 
   # Return result
   combined_array
