@@ -7,12 +7,12 @@ def poorly_written_ruby(*arrays)
   maxIndex = combined_array.length - 1
 
   for i in 0..(maxIndex / 2) do
-    # Find min and max values
+    # Find and delete min value
     minValue = combined_array.min
-    maxValue = combined_array.max
-
-    # Remove min and max values from flattened array
     combined_array.delete(minValue)
+
+    # Find and delete max value
+    maxValue = combined_array.max
     combined_array.delete(maxValue)
 
     # Add min and max values to new array
