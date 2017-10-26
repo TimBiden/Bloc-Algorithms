@@ -13,7 +13,19 @@
 #    END WHILE
 #  END DEF
 
+def calcDistance(currentPoint, nextPoint)
+  sum_of_squares = 0
+  currentPoint.each_with_index do |currentPoint_coord,index|
+    sum_of_squares += (currentPoint_coord - nextPoint[index]) ** 2
+  end
+  distance = Math.sqrt( sum_of_squares )
+  puts "distance = #{distance.round(2)}"
+
+  distance.round(2)
+end
+
 def nearestNeighbor(cities, current_city)
+  currentPoint = []
   cities.each do |city, array|
     puts ' '
     if city == current_city
@@ -32,7 +44,7 @@ def nearestNeighbor(cities, current_city)
       nextPoint = array
       puts "currentLongitude = #{array[0]}"
       puts "currentLatitude = #{array[1]}"
-      break
+      calcDistance(currentPoint, nextPoint)
     end
   end
 end
