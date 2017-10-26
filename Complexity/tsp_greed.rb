@@ -13,6 +13,8 @@
 #    END WHILE
 #  END DEF
 
+
+
 def calcDistance(currentPoint, nextPoint)
   sum_of_squares = 0
   currentPoint.each_with_index do |currentPoint_coord,index|
@@ -25,25 +27,16 @@ def calcDistance(currentPoint, nextPoint)
 end
 
 def nearestNeighbor(cities, current_city)
-  currentPoint = []
-  cities.each do |city, array|
-    puts ' '
-    if city == current_city
-      puts "Curent City = #{city}"
-      currentPoint = array
-      puts "currentLongitude = #{array[0]}"
-      puts "currentLatitude = #{array[1]}"
-      break
-    end
-  end
+  currentPoint = cities[current_city]
+  puts "Got it. #{currentPoint}"
 
   cities.each do |city, array|
     puts ' '
     unless city == current_city
       puts "Potentially Next City = #{city}"
       nextPoint = array
-      puts "currentLongitude = #{array[0]}"
-      puts "currentLatitude = #{array[1]}"
+      # puts "currentLongitude = #{array[0]}"
+      # puts "currentLatitude = #{array[1]}"
       calcDistance(currentPoint, nextPoint)
     end
   end
