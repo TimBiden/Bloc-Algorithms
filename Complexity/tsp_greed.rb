@@ -11,11 +11,7 @@ def calcDistance(currentPoint, nextPoint)
   distance.round(2)
 end
 
-def nearestNeighbor(cities, current_city)
-  @tripList.push current_city
-  currentPoint = cities[current_city]
-  puts "Got it. #{currentPoint}"
-
+def loop(cities, current_city)
   cities.each do |city, array|
     puts ' '
     unless city == current_city
@@ -23,10 +19,20 @@ def nearestNeighbor(cities, current_city)
       nextPoint = array
       # puts "currentLongitude = #{array[0]}"
       # puts "currentLatitude = #{array[1]}"
-      calcDistance(currentPoint, nextPoint)
+      calcDistance(@currentPoint, nextPoint)
     end
   end
   puts ' '
+end
+
+def nearestNeighbor(cities, current_city)
+  firstCity = {current_city => cities[current_city]}
+  @tripList.push current_city
+  @currentPoint = cities[current_city]
+  puts "Got it. #{@currentPoint}"
+
+  loop(cities, current_city)
+
   puts "Trip list = #{@tripList}"
 end
 
