@@ -1,38 +1,39 @@
 @tripList = []
+@closestCity = []
 
-def calcDistance(currentPoint, nextPoint)
+def calcDistance(nextPoint, city)
   sum_of_squares = 0
-  currentPoint.each_with_index do |currentPoint_coord,index|
-    sum_of_squares += (currentPoint_coord - nextPoint[index]) ** 2
+  @currentPoint.each_with_index do |currentPoint_coord, index|
+    sum_of_squares += (currentPoint_coord - nextPoint[index])**2
   end
-  distance = Math.sqrt( sum_of_squares )
-  puts "distance = #{distance.round(2)}"
+  distance = Math.sqrt(sum_of_squares).round(2)
+  puts "distance = #{distance}"
 
-  distance.round(2)
+  if @closestCity[1].nil? || distance <= @closestCity[1]
+    @closestCity[0] = city
+    @closestCity[1] = distance
+  end
 end
 
 def loop(cities, current_city)
+  cities.delete(current_city)
+
   cities.each do |city, array|
     puts ' '
-    unless city == current_city
-      puts "Potentially Next City = #{city}"
-      nextPoint = array
-      # puts "currentLongitude = #{array[0]}"
-      # puts "currentLatitude = #{array[1]}"
-      calcDistance(@currentPoint, nextPoint)
-    end
+    puts "Potentially Next City = #{city}"
+    nextPoint = array
+    calcDistance(nextPoint, city)
   end
-  puts ' '
 end
 
 def nearestNeighbor(cities, current_city)
-  firstCity = {current_city => cities[current_city]}
+  firstCity = { current_city => cities[current_city] }
   @tripList.push current_city
   @currentPoint = cities[current_city]
-  puts "Got it. #{@currentPoint}"
 
-  loop(cities, current_city)
+  loop(cities, current_city) # until cities.empty?
 
+  puts "@closestCity = #{@closestCity}"
   puts "Trip list = #{@tripList}"
 end
 
