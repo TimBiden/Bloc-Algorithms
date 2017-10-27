@@ -24,6 +24,9 @@ def loop(cities, current_city)
     nextPoint = array
     calcDistance(nextPoint, city)
   end
+  @tripList.push current_city
+
+  loop(cities, @closestCity[0])
 end
 
 def nearestNeighbor(cities, current_city)
