@@ -1,5 +1,7 @@
 def calcDistance(nextPoint, city)
   sum_of_squares = 0
+
+  # Find distance between cities
   @currentPoint.each_with_index do |currentPoint_coord, index|
     sum_of_squares += (currentPoint_coord - nextPoint[index])**2
   end
@@ -16,27 +18,34 @@ def loop(cities, current_city)
   @closestCity = []
   @currentPoint = cities[current_city]
 
+  # Remove current city from list so as to not repeat
   cities.delete_if { |key, _value| key == current_city }
 
+  # Find distance from current city to all remaining cities
   cities.each do |city, array|
     nextPoint = array
     calcDistance(nextPoint, city)
   end
+
+  # Add next city to end of array
   @tripList.push current_city
 
+  # Loop through hash until all cities have been visited
   loop(cities, @closestCity[0]) until cities.empty?
 end
 
+# Control center function
 def nearestNeighbor(cities, current_city)
   puts 'Unordered list and coordinates:'
   puts cities
   @tripList = []
+  # Notate originating city to return to
   @firstCity = current_city
-
   @currentPoint = cities[current_city]
 
   loop(cities, current_city)
 
+  # Add originating city to end of list
   @tripList.push current_city
 
   puts ' '
