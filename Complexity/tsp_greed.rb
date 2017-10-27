@@ -16,7 +16,6 @@ def calcDistance(nextPoint, city)
 end
 
 def loop(cities, current_city)
-  cities.delete(current_city)
 
   cities.each do |city, array|
     puts ' '
